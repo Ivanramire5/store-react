@@ -1,0 +1,23 @@
+.NavBar {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    background-color: #23374D;
+    padding: 16px;
+}
+.h1Primario{
+    color: #E5E5E5;
+    font-size: 2rem;
+}
+.divBotones{
+    background-color: #23374D;
+    color: #EEEEEE;
+    border-color:  #1088ff68;
+    border-style: solid;
+    margin-left: 20px;
+    margin-right: 20px;
+    margin-top: 10px;
+    border-top: #23374D;
+    border-left: #23374D;
+    border-right: #23374D;
+}
