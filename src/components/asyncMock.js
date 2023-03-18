@@ -1,10 +1,11 @@
+
 const items = [
     {
         id: 1,
         name: "Nintendo NES",
         price: 350,
         category: "Consolas 8/16/32 bits",
-        img: "../imagenes/nes.png",
+        img: "/imagenes/nes.png",
         stock: 10,
         description: "Consola de 8 bits"
     },
@@ -13,7 +14,7 @@ const items = [
         name: "Sega Megadrive",
         price: 380,
         category: "Consolas 8/16/32 bits",
-        img: "../imagenes/sega-megadrive.png",
+        img: "/imagenes/sega-megadrive.png",
         stock: 10,
         description: "Consola de 16 bits"
     },
@@ -22,7 +23,7 @@ const items = [
         name: "Nintendo 64",
         price: 400,
         category: "Consolas 8/16/32 bits",
-        img: "../imagenes/n64.png",
+        img: "/imagenes/n64.png",
         stock: 10,
         description: "Consola 3d"
     },
@@ -31,7 +32,7 @@ const items = [
         name: "Gameboy",
         price: 200,
         category: "Consolas portatiles",
-        img: "../imagenes/gameboy.png",
+        img: "/imagenes/gameboy.png",
         stock: 10,
         description: "Consola portartil pantalla monocromatica"
     },
@@ -40,7 +41,7 @@ const items = [
         name: "Sega gamegear",
         price: 230,
         category: "Consolas portatiles",
-        img: "../imagenes/sega-gamegear.png",
+        img: "/imagenes/sega-gamegear.png",
         stock: 10,
         description: "Consola portatil pantalla a color"
     },
@@ -49,7 +50,7 @@ const items = [
         name: "Gameboy advance",
         price: 250,
         category: "Consolas portatiles",
-        img: "../imagenes/gameboy-advance.png",
+        img: "/imagenes/gameboy-advance.png",
         stock: 10,
         description: "Consola portatil pantalla a color"
     },
@@ -58,7 +59,7 @@ const items = [
         name: "Lote 10 juegos",
         price: 300,
         category: "Juegos retro",
-        img: "../imagenes/caja-1.png",
+        img: "/imagenes/caja-1.png",
         stock: 30,
         description: "Lote de 10 juegos sorpresa"
     },
@@ -67,7 +68,7 @@ const items = [
         name: "Lote 15 juegos",
         price: 350,
         category: "Juegos retro",
-        img: "../imagenes/caja-2.png",
+        img: "/imagenes/caja-2.png",
         stock: 30,
         description: "Lote de 15 juegos sorpresa"
     },
@@ -76,7 +77,7 @@ const items = [
         name: "Lote 20 juegos",
         price: 300,
         category: "Juegos retro",
-        img: "../imagenes/caja-3.png",
+        img: "/imagenes/caja-3.png",
         stock: 30,
         description: "Lote de 20 juegos sorpresa"
     },
@@ -86,6 +87,22 @@ export const getItems = () => {
     return new Promise((resolve) => {
         setTimeout(() => {
             resolve(items)
-        }, 5000)
-    });
-};
+        }, 3000)
+    })
+}
+
+export const getItemsByCategory = (categoryId) => {
+    return new Promise((resolve) => {
+        setTimeout(() => {
+            resolve(item.find(item.category === categoryId))
+        }, 3000)
+    })
+}
+
+export const getItemById = (itemId) => {
+    return new Promise((resolve) => {
+        setTimeout(() => {
+            resolve(items.find(item.id === itemId))
+        }, 3000)
+    })
+}
