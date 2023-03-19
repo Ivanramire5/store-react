@@ -1,6 +1,6 @@
-import { useEffect, useState } from 'react'
+import Item from "../Item/Item"
 
-const ItemList = ({ items }) => {
+const ProductosTienda = ({ items }) => {
     return (
         <div className="divProductosTienda">
             {

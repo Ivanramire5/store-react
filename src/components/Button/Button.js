@@ -1,7 +1,6 @@
 const Button = (props) => {
-    return <button 
+    return <button>
         onClick={props.handleClick}
-    >
         {props.label}
     </button>
 }
