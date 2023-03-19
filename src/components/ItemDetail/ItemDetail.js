@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react"
-import { getItemById } from "../../asyncMock"
+import { getItemById } from "../asyncMock"
 
 const ItemDetail = ({ name, price, img, description }) => {
     return (

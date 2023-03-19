@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react'
-import { getItems, getItemsByCategory } from "../../asyncMock"
+import { getItems, getItemsByCategory } from "../asyncMock"
+import ItemList from './ItemList'
 import ProductosTienda from '../ProductosTienda/ProductosTienda'
 import { useParams } from 'react-router-dom'
 
@@ -10,7 +11,7 @@ const ItemListContainer = ({ greeting }) => {
     const { categoryId } = useParams()
 
     useEffect(() => {
-        setLoading(true);ç
+        setLoading(true);
         const asyncFunction = categoryId ? getItemsByCategory : getItems
 
         asyncFunction(categoryId)

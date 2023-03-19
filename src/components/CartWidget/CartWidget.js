@@ -1,4 +1,4 @@
- const CartWidget = () => {
+const CartWidget = () => {
     return (
         <div>
             <h2> 🛒 </h2>

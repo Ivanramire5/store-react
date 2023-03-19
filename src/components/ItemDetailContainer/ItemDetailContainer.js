@@ -1,37 +1,33 @@
-import { useEffect, useState } from "react"
-import { getProductById } from "../asyncMock"
-import ItemDetail from "../ItemDetail/ItemDetail"
-import { useParams } from "react-router-dom"
+import { getItemById } from '../asyncMock';
+import React, { useState, useEffect } from 'react';
+import ItemList from '../ItemListContainer/ItemListContainer';
 
-const ItemDetailContainer = () => {
-    const [product, setProduct] = useState()
-    const [loading, setLoading] = useState(true)
-    const { itemId } = useParams()
- 
-    useEffect(() => {
-        setLoading(true)
-        getProductById(itemId)
-            .then(product => {
-                setProduct(product)
-            })
-            .catch(error => {
-                console.log(error)
-            })
-            .finally(() => {
-                setLoading(false)
-            })
-    }, [itemId])
+function ItemDetailContainer({ itemId }) {
+  const [product, setProduct] = useState(null);
 
-    if(loading) {
-        return <h1>Cargando...</h1>
-    }
+  useEffect(() => {
+    getItemById(itemId)
+      .then((product) => {
+        setProduct(product);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  }, [itemId]);
 
     return (
         <div>
-            <h1>Detalle de producto</h1>
-            <ItemDetail {...product}/>
+            {product && (
+            <div>
+                <h2>{product.name}</h2>
+                <p>{product.description}</p>
+                <img src={product.img} alt={product.name} />
+                <p>Price: {product.price}</p>
+                <p>Stock: {product.stock}</p>
+            </div>
+            )}
         </div>
-    )
+    );
 }
 
-export default ItemDetailContainer
+export default ItemDetailContainer;
