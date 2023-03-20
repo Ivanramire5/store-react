@@ -8,8 +8,15 @@ import { BrowserRouter, Routes, Route } from 'react-router-dom';
 function App() {
   return (
     <div className="App">
-      <NavBar />
-      <ItemListContainer greeting={"Bienvenidos a la mejor tienda de videojuegos retro"} />
+      <BrowserRouter>
+        <NavBar />
+        <Routes>
+          <Route path='/' element={<ItemListContainer greeting={"Bienvenidos a la mejor tienda de videojuegos retro"} />} />
+          <Route path='/category/:categoryId' element={<ItemListContainer greeting={'Productos ordenados por categoria'} />} />
+          <Route path='/category/:categoryId/subcategory/:subcategoryId' element={<ItemListContainer greeting={'Productos ordenados por categoria'} />} />
+          <Route path='/item/:itemId' element={<ItemDetailContainer />} />
+        </Routes>
+      </BrowserRouter>
     </div>
   );
 }
