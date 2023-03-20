@@ -87,22 +87,22 @@ export const getItems = () => {
     return new Promise((resolve) => {
         setTimeout(() => {
             resolve(items)
-        }, 3000)
+        }, 2000)
     })
 }
 
 export const getItemsByCategory = (categoryId) => {
     return new Promise((resolve) => {
         setTimeout(() => {
-            resolve(item.find(item.category === categoryId))
-        }, 3000)
+            resolve(items.filter(item => item.category === categoryId))
+        }, 2000)
     })
 }
 
 export const getItemById = (itemId) => {
     return new Promise((resolve) => {
         setTimeout(() => {
-            resolve(items.find(item.id === itemId))
-        }, 3000)
+            resolve(items.find(item => item.id === itemId))
+        }, 2000)
     })
 }
