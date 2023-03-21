@@ -1,19 +1,39 @@
-import Item from "../Item/Item"
-import ItemListContainer from "../ItemListContainer/ItemListContainer"
-console.log('Item',Item)
+import React, { useEffect, useState } from 'react';
+import { getItems } from "../asyncMock"
+
 const ItemList = ({ items }) => {
-    return (
-        <div>
-            <h1>Hola mundo</h1>
+  return (
+    <div>
+      {items.map((item) => (
+        <div key={item.id}>
+            <h2>{item.name}</h2>
+            <img src={item.img} alt={item.name} />
+            <p>{item.description}</p>
+            <p>${item.price}</p>
+            <p>Stock: {item.stock}</p>
         </div>
-    )
-}
+      ))}
+    </div>
+  );
+};
 
-export default ItemList
+const App = () => {
+  const [items, setItems] = useState([]);
 
-//{
-//    items.map(item => {
-//       return <Item key={item.id} {...item}/>
-//   })
-//}
-//</div>
+  useEffect(() => {
+    const fetchItems = async () => {
+        const fetchedItems = await getItems();
+        setItems(fetchedItems);
+    };
+    fetchItems();
+  }, []);
+
+  return (
+    <div>
+        <h1>ItemList Example</h1>
+        <ItemList items={items} />
+    </div>
+    );
+};
+
+export default App;

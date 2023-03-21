@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom"
 
 const Item = ({ id, name, price }) => {
+console.log(name)
     return (
         <div className="estilosDeItems">
             <h2>{name}</h2>
