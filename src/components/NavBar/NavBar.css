@@ -25,3 +25,17 @@
 .MensajeContador{
     color: #19A7CE;
 }
+
+.ItemCajas {
+    background-color: #23374D;
+}
+
+.ActiveLink{
+    background-color: #19A7CE;
+    color: #E5E5E5;
+}
+
+.Link {
+    background-color: #146C94;
+    color: #E5E5E5;
+}

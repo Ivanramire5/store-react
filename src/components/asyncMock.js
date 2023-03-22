@@ -91,6 +91,14 @@ export const getItems = () => {
     })
 }
 
+export const getItemById = (itemId) => {
+    return new Promise((resolve) => {
+        setTimeout(() => {
+            resolve(items.find(item => item.id === itemId))
+        }, 2000)
+    })
+}
+
 export const getItemsByCategory = (categoryId) => {
     return new Promise((resolve) => {
         setTimeout(() => {
@@ -99,10 +107,4 @@ export const getItemsByCategory = (categoryId) => {
     })
 }
 
-export const getItemById = (itemId) => {
-    return new Promise((resolve) => {
-        setTimeout(() => {
-            resolve(items.find(item => item.id === itemId))
-        }, 2000)
-    })
-}
+

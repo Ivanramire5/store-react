@@ -6,11 +6,13 @@ const ItemList = ({ items }) => {
     <div>
       {items.map((item) => (
         <div key={item.id}>
-            <h2>{item.name}</h2>
+          <h2>{item.name}</h2>
+          <div>
             <img src={item.img} alt={item.name} />
-            <p>{item.description}</p>
-            <p>${item.price}</p>
-            <p>Stock: {item.stock}</p>
+          </div>
+          <p>{item.description}</p>
+          <p>${item.price}</p>
+          <p>Stock: {item.stock}</p>
         </div>
       ))}
     </div>
@@ -30,7 +32,7 @@ const App = () => {
 
   return (
     <div>
-        <h1>ItemList Example</h1>
+        <h1>Todos nuestros productos</h1>
         <ItemList items={items} />
     </div>
     );
