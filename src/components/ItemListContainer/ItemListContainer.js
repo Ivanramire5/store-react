@@ -6,7 +6,7 @@ import { useParams } from 'react-router-dom'
 const ItemListContainer = ({ greeting }) => {
     const [productsState, setProductsState] = useState([]);
     const [loading, setLoading] = useState(true);
-    const { categoryId, subcategoryId } = useParams() 
+    const { categoryId } = useParams() 
 
     useEffect(() => {
         setLoading(true);
@@ -35,7 +35,7 @@ const ItemListContainer = ({ greeting }) => {
     return (
         <div>
             <h1>{greeting}</h1>
-            <ItemList products={productsState}/>
+            <ItemList items={productsState}/>
         </div>
     )
 } 

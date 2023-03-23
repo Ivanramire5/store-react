@@ -13,12 +13,11 @@ const App = () => {
       <BrowserRouter>
         <NavBar />
         <Routes>
-          <Route path='/' element={<ItemListContainer greeting={"Bienvenidos mi tienda de videojuegos retro"} />} />
+          <Route path='/' element={<ItemListContainer greeting={"Nuestros productos"} />} />
           <Route path='/category/:categoryId' element={<ItemListContainer greeting={'Productos filtrados por categoria'} />} />
           <Route path='/item/:productId' element={<ItemDetailContainer />} />
         </Routes>
       </BrowserRouter>
-      <ItemList />
     </div>
   );
 }
