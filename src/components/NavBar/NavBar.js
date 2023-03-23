@@ -8,9 +8,9 @@ const NavBar = () => {
         <nav className="NavBar">
             <NavLink to='/'><h1 className="h1Primario">RetroStore</h1></NavLink>
             <div>
-                <NavLink to='/category/consolas' className={({ isActive }) => isActive ? 'ActiveLink' : 'Link'}>Consolas 8/16/32 bits</NavLink>
-                <NavLink to='/category/portatiles' className={({ isActive }) => isActive ? 'ActiveLink' : 'Link'}>Consolas portatiles</NavLink>
-                <NavLink to='/category/juegos' className={({ isActive }) => isActive ? 'ActiveLink' : 'Link'}>Juegos retro</NavLink>
+                <NavLink to='/category/Consolas de sobremesa' className={({ isActive }) => isActive ? 'ActiveLink' : 'Link'}>Consolas de sobremesa</NavLink>
+                <NavLink to='/category/Consolas portatiles' className={({ isActive }) => isActive ? 'ActiveLink' : 'Link'}>Consolas portatiles</NavLink>
+                <NavLink to='/category/Juegos retro' className={({ isActive }) => isActive ? 'ActiveLink' : 'Link'}>Juegos retro</NavLink>
             </div>
             <CartWidget />
         </nav>

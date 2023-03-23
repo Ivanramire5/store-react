@@ -4,7 +4,7 @@ const products = [
         id: 1,
         name: "Nintendo NES",
         price: 350,
-        category: "Consolas 8/16/32 bits",
+        category: "Consolas de sobremesa",
         img: "/imagenes/nes.png",
         stock: 10,
         description: "Consola de 8 bits"
@@ -13,7 +13,7 @@ const products = [
         id: 2,
         name: "Sega Megadrive",
         price: 380,
-        category: "Consolas 8/16/32 bits",
+        category: "Consolas de sobremesa",
         img: "/imagenes/sega-megadrive.png",
         stock: 10,
         description: "Consola de 16 bits"
@@ -22,7 +22,7 @@ const products = [
         id: 3,
         name: "Nintendo 64",
         price: 400,
-        category: "Consolas 8/16/32 bits",
+        category: "Consolas de sobremesa",
         img: "/imagenes/n64.png",
         stock: 10,
         description: "Consola 3d"
@@ -102,7 +102,7 @@ export const getProductsByCategory = (categoryID) => {
 export const getProductByID = (productID) => {
     return new Promise((resolve) => {
         setTimeout(() => {
-            resolve(products.find(prod => prod.id === productID))
+            resolve(products.find(prod => prod.id == productID))
         }, 1500)
     })
 }
