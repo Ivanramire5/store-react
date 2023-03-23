@@ -1,23 +1,38 @@
 import { useEffect, useState } from "react";
-import { getItemById } from "../asyncMock";
+import { getProductByID } from "../asyncMock";
 import ItemDetail from "../ItemDetail/ItemDetail";
+import Counter from "../Counter/Counter"
 import { useParams } from "react-router-dom"
 
 const ItemDetailContainer = () => {
-  const [item, setItem] = useState()
-  const { productId } = useParams()
-  
+  const [product, setProduct] = useState()
+  const [loading, setLoading] = useState(true)
+
+  const {itemID} = useParams()
+
   useEffect(() => {
-    getItemById(productId)
-    .then(item => {
-      setItem(item)
-    })
-  }, [productId])
-  return (
-    <div>
-      <h1>Detalle del producto</h1>
-      <ItemDetail {...item} />
-    </div>
+      setLoading(true)
+      getProductByID(itemID)
+          .then(product => {
+              setProduct(product)
+          })
+          .catch(error => {
+              console.log(error)
+          })
+          .finally(() => {
+              setLoading(false)
+          })
+  }, [itemID])
+
+  if(loading){
+      return <h1>Cargando, espere</h1>
+  }
+
+  return(
+      <div className="Producto">
+          <ItemDetail {...product}/>
+          <Counter {...product}/>
+      </div>
   )
 }
 

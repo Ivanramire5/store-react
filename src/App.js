@@ -8,14 +8,16 @@ import { BrowserRouter, Routes, Route } from 'react-router-dom';
 
 const App = () => {
 
+  const props = {titulo: "Bienvenidos a RetroStore", subtitulo: "La mejor tienda de productos retro del pais"}
+
   return (
     <div className="App">
       <BrowserRouter>
         <NavBar />
         <Routes>
-          <Route path='/' element={<ItemListContainer greeting={"Nuestros productos"} />} />
-          <Route path='/category/:categoryId' element={<ItemListContainer greeting={'Productos filtrados por categoria'} />} />
-          <Route path='/item/:productId' element={<ItemDetailContainer />} />
+          <Route path='/' element={<ItemListContainer props= {props} />} />
+          <Route path='/category/:categoryID' element={<ItemListContainer greeting={'Productos filtrados por categoria'} />} />
+          <Route path='/item/:itemID' element={<ItemDetailContainer />} />
         </Routes>
       </BrowserRouter>
     </div>

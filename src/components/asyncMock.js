@@ -1,5 +1,5 @@
 
-const items = [
+const products = [
     {
         id: 1,
         name: "Nintendo NES",
@@ -83,27 +83,27 @@ const items = [
     },
 ]
 
-export const getItems = () => {
+export const getProducts = () => {
     return new Promise((resolve) => {
         setTimeout(() => {
-            resolve(items)
-        }, 2000)
+            resolve(products)
+        },1500)
     })
 }
 
-export const getItemById = (itemId) => {
+export const getProductsByCategory = (categoryID) => {
     return new Promise((resolve) => {
         setTimeout(() => {
-            resolve(items.find(item => item.id === itemId))
-        }, 2000)
+            resolve(products.filter(prod => prod.category === categoryID))
+        },1500)
     })
 }
 
-export const getItemsByCategory = (categoryId) => {
+export const getProductByID = (productID) => {
     return new Promise((resolve) => {
         setTimeout(() => {
-            resolve(items.filter(item => item.category === categoryId))
-        }, 2000)
+            resolve(products.find(prod => prod.id === productID))
+        }, 1500)
     })
 }
 

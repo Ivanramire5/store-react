@@ -27,7 +27,13 @@
 }
 
 .ItemCajas {
-    background-color: #23374D;
+    background-color: #19A7CE;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    margin-left: 80px;
+    margin-right: 80px;
+    margin: 30px;
 }
 
 .ActiveLink{

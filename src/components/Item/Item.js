@@ -1,11 +1,13 @@
-import { Link } from "react-router-dom"
+import {Link} from "react-router-dom"
 
-const Item = ({ id, name, price }) => {
+
+const Item = ({id, name, price, category}) => {
     return (
         <div className="ItemCajas">
             <h2>{name}</h2>
-            <h3>precio: {price}</h3>
-            <Link to={`/item/${id}`} style={{ background: '#F6F1F1'}}>Ver producto</Link>
+            <h3>${price}</h3>
+            <h4>{category}</h4>
+            <Link to={`/item/${id}`}><button>Ver producto</button></Link>
         </div>
     )
 }
