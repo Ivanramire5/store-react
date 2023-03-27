@@ -8,7 +8,9 @@
 .h1Primario{
     color: #E5E5E5;
     font-size: 2rem;
+    text-decoration: none;
 }
+
 .divBotones{
     background-color: #23374D;
     color: #EEEEEE;
@@ -25,22 +27,67 @@
 .MensajeContador{
     color: #19A7CE;
 }
-
+.ItemList{
+    display: grid;
+    justify-items: space-around;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+    margin-top: 30px;
+    margin-left: 40px;
+    margin-right: 40px;
+    padding: 20px;
+    grid-template-columns: repeat(3, 2fr);
+    grid-template-rows: repeat(3, 600px);
+}
 .ItemCajas {
     background-color: #19A7CE;
-    display: flex;
-    flex-direction: column;
-    flex-wrap: wrap;
-    margin-left: 80px;
-    margin-right: 80px;
-    margin: 30px;
+    margin-top: 30px;
+    color:  #EEEEEE;
+    border-color: #23374D;
+    border-style: solid;
 }
-
+.ItemCajas img{
+    height: 300px;
+    width: 300px;
+}
+.ItemCajas button{
+    background-color: #23374D;
+    color: #E5E5E5;
+    padding: 10px;
+    margin-bottom: 20px;
+    border-color: #E5E5E5;
+    border-style: solid;
+    border-radius: 10%;
+}
+.ItemPrecio{
+    text-align: center;
+    color: #23374D;
+}
 .ActiveLink{
     background-color: #19A7CE;
     color: #E5E5E5;
 }
-
+.Producto{
+    background-color: #19A7CE;
+    margin-top: 30px;
+    color: #E5E5E5;
+    border-style: solid;
+    border-color: #23374D;
+}
+.Producto p{
+    padding: 10px;
+    font-size: 1.3rem;
+    color: #E5E5E5;
+}
+.Producto h2{
+    font-size: 2rem;
+}
+.ButtonItem{
+    background-color: #23374D;
+    color: #E5E5E5;
+    font-size: 1.3rem;
+}
 .Link {
     background-color: #146C94;
     color: #E5E5E5;
