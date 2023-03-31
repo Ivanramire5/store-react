@@ -4,8 +4,7 @@ import { CartContext } from '../../context/CartContext';
 import { Link } from 'react-router-dom';
 import { useNotification } from '../../notification/NotificationService';
 
-
-const ItemDetail = ({ id, name, img, price, description, stock }) => {
+const ItemDetail = ({ id, name, img, category, description, price, stock}) => {
     const [cantidad, setCantidad] = useState(0)
     const { addItem } = useContext(CartContext)
     const { setNotification } = useNotification()
@@ -14,10 +13,11 @@ const ItemDetail = ({ id, name, img, price, description, stock }) => {
         const productoParaAgregar = {
             id, name, price, cantidad
         }
-        setCantidad(cantidad);
+        setCantidad(cantidad)
         addItem(productoParaAgregar)
-        setNotification('error', `Se agrego correctamente ${cantidad} ${name}`);
+        setNotification('error', `Se añadio correctamente ${cantidad} ${name}`)
     }
+
     return (
         <article className="CardItem">
             <header className="Header">
@@ -26,20 +26,23 @@ const ItemDetail = ({ id, name, img, price, description, stock }) => {
                 </h2>
             </header>
             <picture>
-                <img src={img} alt={name} className="ItemImagen"/>
+                <img src={img} alt={name} className="ItemImg"/>
             </picture>
             <section>
-                <p className="Informacion">
-                    Descripcion: {description}
+                <p className="Info">
+                    Categoria: {category}
                 </p>
-                <p className="Informacion">
+                <p className="Info">
+                    Descripción: {description}
+                </p>
+                <p className="Info">
                     Precio: {price}
                 </p>
-            </section>
-            <footer className="ItemFooter">
+            </section>           
+            <footer className='ItemFooter'>
                 {
                     cantidad > 0 ? (
-                        <Link to='/cart'>Finalizar compra</Link>
+                        <Link to='/cart'>Terminar compra</Link>
                     ) : (
                         <ItemCount onAdd={handleOnAdd} stock={stock} />
                     )

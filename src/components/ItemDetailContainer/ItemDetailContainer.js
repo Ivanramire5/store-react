@@ -1,39 +1,25 @@
-import { useEffect, useState } from "react";
-import { getProductByID } from "../asyncMock";
-import ItemDetail from "../ItemDetail/ItemDetail";
-import Counter from "../Counter/Counter"
-import { useParams } from "react-router-dom"
+import { useState, useEffect } from 'react'
+import { getProductByID } from '../asyncMock'
+import ItemDetail from '../ItemDetail/ItemDetail'
+import { useParams } from 'react-router-dom'
 
 const ItemDetailContainer = () => {
-  const [product, setProduct] = useState()
-  const [loading, setLoading] = useState(true)
+    const [product, setProduct] = useState()
+    const { itemID } = useParams()
 
-  const {itemID} = useParams()
+    useEffect(() => {
+        getProductByID(itemID).then(response => {
+            setProduct(response)
+        }).catch(error => {
+            console.log(error)
+        })
+    }, [itemID])
 
-  useEffect(() => {
-      setLoading(true)
-      getProductByID(itemID)
-          .then(product => {
-              setProduct(product)
-          })
-          .catch(error => {
-              console.log(error)
-          })
-          .finally(() => {
-              setLoading(false)
-          })
-  }, [itemID])
-
-  if(loading){
-      return <h1>Cargando, espere</h1>
-  }
-
-  return(
-      <div className="Producto">
-          <ItemDetail {...product}/>
-          <Counter {...product}/>
-      </div>
-  )
+    return (
+        <div className='ItemDetailContainer' >
+            <ItemDetail {...product} />
+        </div>
+    )
 }
 
 export default ItemDetailContainer

@@ -1,44 +1,53 @@
-import {useEffect,useState} from 'react'
-import {getProducts,getProductsByCategory} from "../asyncMock"
+import { useEffect, useState, memo } from 'react'
+import { useParams } from 'react-router-dom'
+import { getProducts, getProductsByCategory } from '../asyncMock'
 import ItemList from '../ItemList/ItemList'
-import {useParams} from 'react-router-dom'
+import Item from '../Item/Item'
 
-const ItemListContainer = ({ props }) => {
+const ItemMemo = memo(ItemList)
 
-    const[productsState, setProductsState] = useState([])
-    const[loading,setLoading] = useState(true)
-
-    const{categoryID} = useParams()
+const ItemListContainer = ({ greeting }) => {
+    const [products, setProducts] = useState([])
+    const [loading, setLoading] = useState(true)
+    const [error, setError] = useState(false)
+    const [title, setTitle] = useState('blablabablabla')
+    const { categoryID } = useParams()
 
     useEffect(() => {
-        setLoading(true)
         const asyncFunction = categoryID ? getProductsByCategory : getProducts
 
         asyncFunction(categoryID)
             .then(products => {
-                setProductsState(products)
+                setProducts(products)
             })
             .catch(error => {
                 console.log(error)
+                setError(true)
             })
             .finally(() => {
                 setLoading(false)
             })
     }, [categoryID])
 
-    if(loading){
-        return <h1>Cargando, aguarde por favor</h1>
+    useEffect(() => {
+        setTimeout(() => {
+            setTitle('otro titulo')
+        }, 2000)
+    }, [])
+
+    if(loading) {
+        return <h1>Cargando...</h1>
     }
 
-    if(productsState && productsState.length === 0){
-        return <h1>No hay Productos</h1>
+    if(error) {
+        return <h1>Vuelva a cargar la pagina</h1>
     }
-
-    return (
-        <div className="title">
-            {<h1>{props.titulo}</h1>}
-            <h2>{props.subtitulo}</h2>
-            <ItemList products={productsState}/>
+    
+    return(
+        <div>
+            <h1>{greeting}</h1>
+            <h2>{title}</h2>
+            <ItemMemo products={products}/>
         </div>
     )
 }
