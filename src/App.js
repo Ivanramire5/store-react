@@ -15,16 +15,18 @@ const App = () => {
 
   return (
     <div className="App">
-      <NotificationProvider>
-        <BrowserRouter>
-          <NavBar />
-          <Routes>
-            <Route path='/' element={<ItemListContainer props= {props} />} />
-            <Route path='/category/:categoryID' element={<ItemListContainer props={props} />} />
-            <Route path='/item/:itemID' element={<ItemDetailContainer />} />
-          </Routes>
-        </BrowserRouter>
-      </NotificationProvider>
+      <BrowserRouter>
+        <NotificationProvider>
+          <CartProvider>
+            <NavBar />
+            <Routes>
+              <Route path='/' element={<ItemListContainer props= {props} />} />
+              <Route path='/category/:categoryID' element={<ItemListContainer props={props} />} />
+              <Route path='/item/:itemID' element={<ItemDetailContainer />} />
+            </Routes>
+          </CartProvider>
+        </NotificationProvider>
+      </BrowserRouter>
     </div>
   );
 }

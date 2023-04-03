@@ -75,7 +75,7 @@ const products = [
     {
         id: 9,
         name: "Lote 20 juegos",
-        price: 300,
+        price: 400,
         category: "Juegos retro",
         img: "/imagenes/caja-3.png",
         stock: 30,

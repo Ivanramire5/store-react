@@ -5,9 +5,24 @@
     background-color: #114f6cfa;
     padding: 16px;
 }
+.d-grid{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    background-color: #19a7ce60;
+    border-radius: 10%;
+}
+.Link{
+    margin-right: 10px;
+    color: #E5E5E5;
+    text-decoration: none;
+}
 .h1Primario{
     color: #E5E5E5;
     font-size: 2rem;
+    text-decoration: none;
+}
+.active{
     text-decoration: none;
 }
 
@@ -40,21 +55,24 @@
     grid-template-columns: repeat(3, 2fr);
     grid-template-rows: repeat(3, 600px);
 }
-.ItemCajas {
+.ItemFooter{
+    margin-bottom: 20px;
+}
+.CardItem {
     background-color: #19a7ceba;
     margin-top: 30px;
     color:  #EEEEEE;
     border-color: #23374D;
     border-style: solid;
 }
-.ItemCajas img{
+.CardItem img{
     height: 300px;
     width: 300px;
 }
-.ItemCajas button{
+.Option{
     background-color: #23374D;
     color: #E5E5E5;
-    padding: 10px;
+    padding: 5px;
     margin-bottom: 20px;
     border-color: #E5E5E5;
     border-style: solid;
@@ -83,12 +101,24 @@
 .Producto h2{
     font-size: 2rem;
 }
-.ButtonItem{
+.Button{
     background-color: #23374D;
     color: #E5E5E5;
     font-size: 1.3rem;
 }
-.Link {
-    background-color: #146C94;
-    color: #E5E5E5;
+
+.Controles{
+    display: flex;
+    margin-left: 45%;
+    margin-right: 45%;
+    text-align: center;
+}
+.Button{
+    margin: 10px
+}
+.CartWidget{
+    color: #19A7CE;
+}
+.Numero{
+    color: #23374D;
 }
