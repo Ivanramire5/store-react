@@ -8,7 +8,7 @@ export const CartProvider = ({ children }) => {
 
     const addItem = (productToAdd) => {
         if(!isInCart(productToAdd.id)) {
-            setCart(prev => [...prev, productToAdd.id])
+            setCart(prev => [...prev, { ...productToAdd}])
         } else {
             console.log("El producto ya fue añadido")
         }

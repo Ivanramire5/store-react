@@ -106,7 +106,6 @@
     color: #E5E5E5;
     font-size: 1.3rem;
 }
-
 .Controles{
     display: flex;
     margin-left: 45%;
@@ -121,4 +120,14 @@
 }
 .Numero{
     color: #23374D;
+}
+.ArticulosTitulo{
+    color: #23374D;
+    font-size: 2rem;
+    padding-top: 10px;
+}
+.ItemHeader{
+    padding-top: 16px;
+    text-align: center;
+    font-size: 2rem;
 }

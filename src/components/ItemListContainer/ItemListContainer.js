@@ -31,7 +31,7 @@ const ItemListContainer = ({ greeting }) => {
 
     useEffect(() => {
         setTimeout(() => {
-            setTitle('Todos nuestros articulos')
+            setTitle(<h2 className='ArticulosTitulo'>Todos nuestros articulos</h2>)
         }, 2000)
     }, [])
 
