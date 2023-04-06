@@ -77,6 +77,7 @@
     border-color: #E5E5E5;
     border-style: solid;
     border-radius: 10%;
+    text-decoration: none;
 }
 .ItemPrecio{
     text-align: center;
@@ -130,4 +131,44 @@
     padding-top: 16px;
     text-align: center;
     font-size: 2rem;
+}
+.ActiveOption{
+    background-color: #23374D;
+    color: #E5E5E5;
+    padding: 5px;
+    margin-bottom: 20px;
+    border-color: #E5E5E5;
+    border-style: solid;
+    border-radius: 10%;
+    text-decoration: none;
+}
+.LoginForm{
+    color:#E5E5E5;
+    background-color: #23374D;
+    padding: 10px;
+    margin-bottom: -1px;
+    font-size: 2rem;
+}
+.FormularioDato{
+    display: flex;
+    background-color:#19A7CE;
+    padding: 20px;
+    margin: auto;
+    justify-content: center;
+    text-align: center;
+}
+.BotonForm{
+    background-color: #23374D;
+    color: #E5E5E5;
+    padding: 5px;
+    margin-bottom: 20px;
+    border-color: #E5E5E5;
+    border-style: solid;
+    border-radius: 10%;
+    text-decoration: none;
+    margin-top: 10px;
+}
+.TextoFormulario{
+    color: #E5E5E5;
+    margin-right: 30px;
 }

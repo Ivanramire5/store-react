@@ -8,6 +8,8 @@ import { BrowserRouter, Routes, Route } from 'react-router-dom';
 
 import { CartProvider } from './context/CartContext';
 import { Notification, NotificationProvider } from './notification/NotificationService';
+import Login from './components/Login/Login'
+import { AuthProvider } from './context/AuthContext';
 
 const App = () => {
 
@@ -15,18 +17,21 @@ const App = () => {
 
   return (
     <div className="App">
-      <BrowserRouter>
-        <NotificationProvider>
-          <CartProvider>
-            <NavBar />
-            <Routes>
-              <Route path='/' element={<ItemListContainer props= {props} />} />
-              <Route path='/category/:categoryID' element={<ItemListContainer props={props} />} />
-              <Route path='/item/:itemID' element={<ItemDetailContainer />} />
-            </Routes>
-          </CartProvider>
-        </NotificationProvider>
-      </BrowserRouter>
+      <NotificationProvider>
+        <BrowserRouter>
+          <AuthProvider>
+            <CartProvider>
+              <NavBar />
+              <Routes>
+                <Route path='/' element={<ItemListContainer props= {props} />} />
+                <Route path='/category/:categoryID' element={<ItemListContainer props={props} />} />
+                <Route path='/item/:itemID' element={<ItemDetailContainer />} />
+                <Route path='/login' element={<Login />} />
+              </Routes>
+            </CartProvider>
+          </AuthProvider>
+        </BrowserRouter>
+      </NotificationProvider>
     </div>
   );
 }
