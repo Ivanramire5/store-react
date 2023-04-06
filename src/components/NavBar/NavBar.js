@@ -8,7 +8,7 @@ import { collection, getDocs } from 'firebase/firestore'
 import { db } from '../../services/firebase/firebaseConfig'
 
 const NavBar = () => {
-    const { categories, setCategories } = useState([])
+    const [ categories, setCategories ] = useState([])
     const { user } = useAuth()
 
     useEffect(() => {
@@ -19,6 +19,7 @@ const NavBar = () => {
                 const data = doc.data()
                 return { id: doc.id, ...data }
             })
+
             setCategories(categoriesAdapted)
         })
     }, [])
@@ -29,7 +30,7 @@ const NavBar = () => {
                 {
                     categories.map(cat => {
                         return (
-                            <NavLink key={cat.id} to={`/categories/${cat.slug}`} className={({ isActive }) => isActive ? 'ActiveLink' : 'Link'}>{cat.label}</NavLink>
+                            <NavLink key={cat.id} to={`/category/${cat.slug}`} className={({ isActive }) => isActive ? 'ActiveLink' : 'Link'}>{cat.label}</NavLink>
                         )
                     })
                 }
