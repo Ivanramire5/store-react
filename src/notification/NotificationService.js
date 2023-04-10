@@ -5,7 +5,7 @@ export const Notification = ({ type, text}) => {
         position: 'absolute',
         top: 100,
         right: 50,
-        backgroundColor: type === 'success' ? 'green' : 'red',
+        backgroundColor: type === 'success' ? '#19A7CE' : '#EFA3C8',
         color: 'white',
         padding: '10px 20px 10px 20px',
         borderRadius: 10
@@ -28,12 +28,12 @@ export const NotificationProvider = ({ children }) => {
         text: ''
     }) 
 
-    const setNotification = (type, text) => {
+    const setNotification = (type, text, time) => {
         setNotificationData({type, text})
 
         setTimeout(() => {
             setNotificationData({ type: 'success', text: ''})
-        }, 2000)
+        }, time ? time * 1000 : 2000)
     }
 
     return (

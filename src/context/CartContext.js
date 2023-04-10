@@ -1,4 +1,5 @@
-import { createContext, useState } from "react";
+import { createContext, useState } from 'react';
+import  { useNotification } from '../notification/NotificationService';
 
 export const CartContext = createContext()
 
@@ -6,11 +7,27 @@ export const CartProvider = ({ children }) => {
     const [cart, setCart] = useState([])
     console.log(cart)
 
+    const { setNotification } = useNotification()
+
     const addItem = (productToAdd) => {
         if(!isInCart(productToAdd.id)) {
-            setCart(prev => [...prev, { ...productToAdd}])
+            setCart(prev => [...prev, productToAdd])
         } else {
-            console.log("El producto ya fue añadido")
+            const updateCart = cart.map(prod => {
+                if(prod.id === productToAdd.id) {
+                    let nuevaCantidad = prod.quantity + productToAdd.quantity
+                    if(nuevaCantidad > prod.stock) {
+                        nuevaCantidad = prod.stock
+                        setNotification('success', `El stock disponible es de ${prod.stock}`, 1)
+                    } else {
+                        setNotification('success',`Se agrego correctamente ${productToAdd.quantity} ${productToAdd.name}`, 1)
+                    }
+                    return { ...prod, quantity: nuevaCantidad }
+                } else {
+                    return prod
+                }
+            })
+            setCart(updateCart)
         }
     }
 
@@ -21,20 +38,28 @@ export const CartProvider = ({ children }) => {
     const isInCart = (id) => {
         return cart.some(prod => prod.id === id)
     }
-
-    const getCantidadTotal = () => {
-        let cantidadTotal = 0;
+    const getTotalCantidad = () => {
+        let totalCantidad = 0
         cart.forEach(prod => {
-            cantidadTotal += prod.cantidad;
+            totalCantidad += prod.quantity
         })
-        return cantidadTotal
+        return totalCantidad
     }
-    const cantidadTotal = getCantidadTotal()
+    const totalCantidad = getTotalCantidad()
+
+    const getTotal = () => {
+        let total = 0
+        cart.forEach(prod => {
+            total += prod.quantity * prod.price
+        })
+        return total
+    }
+
+    const total = getTotal()
 
     return (
-        <CartContext.Provider value={{cart, addItem, removeItem, cantidadTotal}}>
-            { children }
+        <CartContext.Provider value={{cart, addItem, removeItem, totalCantidad, total}}>
+        { children }
         </CartContext.Provider>
     )
 }
-export default CartContext

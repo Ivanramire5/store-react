@@ -4,7 +4,7 @@ import './NavBar.css'
 import { Link, NavLink } from 'react-router-dom'
 import { useAuth } from '../../context/AuthContext';
 import { useEffect, useState } from 'react';
-import { collection, getDocs } from 'firebase/firestore'
+import { collection, getDocs, query, orderBy } from 'firebase/firestore'
 import { db } from '../../services/firebase/firebaseConfig'
 
 const NavBar = () => {
@@ -12,7 +12,7 @@ const NavBar = () => {
     const { user } = useAuth()
 
     useEffect(() => {
-        const categoriesRef = collection(db, 'categories')
+        const categoriesRef = query(collection(db, 'categories'), orderBy('order'))
         getDocs(categoriesRef)
         .then(snapshot => {
             const categoriesAdapted = snapshot.docs.map(doc => {
@@ -21,7 +21,7 @@ const NavBar = () => {
             })
 
             setCategories(categoriesAdapted)
-        })
+        }) 
     }, [])
     return (
         <nav className="NavBar">

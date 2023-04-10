@@ -172,3 +172,13 @@
     color: #E5E5E5;
     margin-right: 30px;
 }
+.ItemFooter a{
+    background-color: #23374D;
+    color: #E5E5E5;
+    padding: 5px;
+    margin-bottom: 20px;
+    border-color: #E5E5E5;
+    border-style: solid;
+    border-radius: 10%;
+    text-decoration: none;
+}

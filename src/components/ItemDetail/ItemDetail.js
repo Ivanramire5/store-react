@@ -11,11 +11,11 @@ const ItemDetail = ({ id, name, img, category, description, price, stock}) => {
 
     const handleOnAdd = (cantidad) => {
         const productoParaAgregar = {
-            id, name, price, cantidad
+            id, name, price, cantidad, stock
         }
         setCantidad(cantidad)
         addItem(productoParaAgregar)
-        setNotification('error', `Se añadio correctamente ${cantidad} ${name}`)
+        setNotification('success', `Se añadio correctamente ${cantidad} ${name}`, 1)
     }
 
     return (
