@@ -182,3 +182,16 @@
     border-radius: 10%;
     text-decoration: none;
 }
+.botonCompra{
+    background-color: #23374D;
+    color: #E5E5E5;
+    border-color: #E5E5E5;
+    border-style: solid;
+    text-decoration: none;
+}
+.carritoFinal{
+    margin-top: -10px;
+    padding: 10px;
+    color:#E5E5E5;
+    background-color:#23374D
+}

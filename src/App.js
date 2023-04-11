@@ -5,11 +5,12 @@ import ItemListContainer from './components/ItemListContainer/ItemListContainer'
 import ItemDetailContainer from './components/ItemDetailContainer/ItemDetailContainer'
 import NavBar from './components/NavBar/NavBar';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
-
 import { CartProvider } from './context/CartContext';
 import { Notification, NotificationProvider } from './notification/NotificationService';
 import Login from './components/Login/Login'
 import { AuthProvider } from './context/AuthContext';
+import Cart from './components/Cart/Cart';
+import Checkout from './components/Checkout/Checkout';
 
 const App = () => {
 
@@ -27,6 +28,8 @@ const App = () => {
                 <Route path='/category/:categoryID' element={<ItemListContainer props={props} />} />
                 <Route path='/item/:itemID' element={<ItemDetailContainer />} />
                 <Route path='/login' element={<Login />} />
+                <Route path='/cart' element={<Cart />} />
+                <Route path='/checkout' element={<Checkout />} />
               </Routes>
             </CartProvider>
           </AuthProvider>
