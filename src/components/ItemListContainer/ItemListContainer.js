@@ -1,7 +1,9 @@
 import { useEffect, useState, memo } from 'react'
 import { useParams } from 'react-router-dom'
-import { getProducts, getProductsByCategory } from '../asyncMock'
+// import { getProducts, getProductsByCategory } from '../asyncMock'
 import ItemList from '../ItemList/ItemList'
+import { getDocs, collection, query, where } from 'firebase/firestore'
+import { db } from '../../services/firebase/firebaseConfig'
 import Item from '../Item/Item'
 
 const ItemMemo = memo(ItemList)
@@ -10,7 +12,7 @@ const ItemListContainer = ({ greeting }) => {
     const [products, setProducts] = useState([])
     const [loading, setLoading] = useState(true)
     const [error, setError] = useState(false)
-    const [title, setTitle] = useState('blablabablabla')
+    const [title, setTitle] = useState('')
     const { categoryID } = useParams()
 
     useEffect(() => {
