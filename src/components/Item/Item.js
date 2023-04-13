@@ -1,6 +1,6 @@
 import { Link, useNavigate } from "react-router-dom"
 
-const Item = ({id, name, img, price}) => {
+const Item = ({ID, name, img, price}) => {
 
     return (
         <article className="CardItem">
@@ -18,7 +18,7 @@ const Item = ({id, name, img, price}) => {
                 </p>
             </section>           
             <footer className='ItemFooter'>
-                <Link to={`/item/${id}`} className='Option'>Ver detalle</Link>
+                <Link to={`/item/${ID}`} className='Option'>Ver detalle</Link>
             </footer>
         </article>
     )

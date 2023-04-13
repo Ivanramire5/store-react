@@ -2,12 +2,12 @@ import { useContext, useState } from "react";
 import ItemCount from '../ItemCount/ItemCount';
 import { CartContext } from '../../context/CartContext';
 import { Link } from 'react-router-dom';
-import { useNotification } from '../../notification/NotificationService';
 
-const ItemDetail = ({ id, name, img, category, description, price, stock}) => {
+
+const ItemDetail = ({ id, name, img, category, description, price, stock }) => {
     const [cantidad, setCantidad] = useState(0)
     const { addItem } = useContext(CartContext)
-    const { setNotification } = useNotification()
+
 
     const handleOnAdd = (cantidad) => {
         const productoParaAgregar = {
@@ -15,7 +15,6 @@ const ItemDetail = ({ id, name, img, category, description, price, stock}) => {
         }
         setCantidad(cantidad)
         addItem(productoParaAgregar)
-        setNotification('success', `Se añadio correctamente ${cantidad} ${name}`, 1)
     }
 
     return (
@@ -40,7 +39,7 @@ const ItemDetail = ({ id, name, img, category, description, price, stock}) => {
                 </p>
             </section>           
             <footer className='ItemFooter'>
-                 {/* {
+                {/* {
                     cantidad > 0 ? (
                         <Link to='/cart'>Terminar compra</Link>
                     ) : ( */}

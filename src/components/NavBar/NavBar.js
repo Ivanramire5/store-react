@@ -19,8 +19,9 @@ const NavBar = () => {
                 const data = doc.data()
                 return { id: doc.id, ...data }
             })
-
             setCategories(categoriesAdapted)
+        }).catch(error => {
+            console.log(error)
         }) 
     }, [])
     return (
