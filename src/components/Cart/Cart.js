@@ -12,7 +12,7 @@ const Cart = () => {
             {
                 cart.map(prod => {
                     return (
-                        <div key={prod.ID}>
+                        <div key={prod.id}>
                             {prod.name}
                         </div>
                     )

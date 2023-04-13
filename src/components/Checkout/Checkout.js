@@ -6,7 +6,7 @@ import { useNotification } from '../../notification/NotificationService'
 import { useNavigate } from 'react-router-dom'
 
 const Checkout = () => {
-    const [orderID, setOrderId] = useState('')
+    const [orderId, setOrderId] = useState('')
     const [loading, setLoading] = useState(false)
     const { cart, total, clearCart } = useContext(CartContext)
 
@@ -27,7 +27,7 @@ const Checkout = () => {
                 total: total
             }
 
-            const ids = cart.map(prod => prod.ID)
+            const ids = cart.map(prod => prod.id)
 
             const productRef = query(collection(db, 'products'), where(doc(db, 'products'), 'in', ids)) // Corregir la referencia a la identificación de documentos
 
@@ -42,13 +42,13 @@ const Checkout = () => {
                 const dataDoc = doc.data()
                 const stockDb = dataDoc.stock
 
-                const productoAgregadoAlCarrito = cart.find(prod => prod.ID === doc.ID)
+                const productoAgregadoAlCarrito = cart.find(prod => prod.id === doc.id)
                 const prodCantidad = productoAgregadoAlCarrito?.cantidad
 
                 if(stockDb >= prodCantidad) {
                     batch.update(doc.ref, { stock: stockDb - prodCantidad})
                 } else {
-                    outOfStock.push({ ID: doc, ...dataDoc})
+                    outOfStock.push({ id: doc, ...dataDoc})
                 }
             })
 
@@ -59,7 +59,7 @@ const Checkout = () => {
 
                 const orderAdded = await addDoc(orderRef, objOrder)
                 clearCart()
-                setOrderId(orderAdded.ID)
+                setOrderId(orderAdded.id)
 
                 setTimeout(() => {
                     navigate('/')
@@ -84,7 +84,7 @@ const Checkout = () => {
             <h1>Checkout</h1>
 
             {/* <Form onConfirm={handleConfirm}/> */}
-            { orderID ? <h2>El id de su pedido es: {orderID}</h2> : <button onClick={handleConfirm}>Generar orden</button> }
+            { orderId ? <h2>El id de su pedido es: {orderId}</h2> : <button onClick={handleConfirm}>Generar orden</button> }
         </div>
     )
 }

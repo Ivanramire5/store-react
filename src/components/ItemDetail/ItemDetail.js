@@ -2,6 +2,7 @@ import { useContext, useState } from "react";
 import ItemCount from '../ItemCount/ItemCount';
 import { CartContext } from '../../context/CartContext';
 import { Link } from 'react-router-dom';
+import { useNotification } from "../../notification/NotificationService";
 
 
 const ItemDetail = ({ id, name, img, category, description, price, stock }) => {
@@ -12,6 +13,7 @@ const ItemDetail = ({ id, name, img, category, description, price, stock }) => {
     const handleOnAdd = (cantidad) => {
         const productoParaAgregar = {
             id, name, price, cantidad, stock
+            
         }
         setCantidad(cantidad)
         addItem(productoParaAgregar)

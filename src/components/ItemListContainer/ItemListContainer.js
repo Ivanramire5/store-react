@@ -1,21 +1,19 @@
 import { useEffect, useState, memo } from 'react'
 import { useParams } from 'react-router-dom'
-// import { getProducts, getProductsByCategory } from '../asyncMock'
 import ItemList from '../ItemList/ItemList'
 //import { getDocs, collection, query, where } from 'firebase/firestore'
 //import { db } from '../../services/firebase/firebaseConfig'
 import { getProducts } from '../../services/firebase/firestore/products'
 import { useAsync } from '../../hooks/useAsync'
-import Item from '../Item/Item'
 
 const ItemListMemo = memo(ItemList)
 
 const ItemListContainer = ({ greeting }) => {
-    const { categoryID } = useParams()
+    const { categoryId } = useParams()
 
-    const getProductsWithCategory = () => getProducts(categoryID)
+    const getProductsWithCategory = () => getProducts(categoryId)
 
-    const { data: products, error, loading } = useAsync(getProductsWithCategory, [categoryID])
+    const { data: products, error, loading } = useAsync(getProductsWithCategory, [categoryId])
 
     //const [products, setProducts] = useState([])
     //const [loading, setLoading] = useState(true)
@@ -24,9 +22,9 @@ const ItemListContainer = ({ greeting }) => {
     //const { categoryID } = useParams()
 
     //useEffect(() => {
-        //const asyncFunction = categoryID ? getProductsByCategory : getProducts
+        //const asyncFunction = categoryId ? getProductsByCategory : getProducts
 
-        //asyncFunction(categoryID)
+        //asyncFunction(categoryId)
             //.then(products => {
                 //setProducts(products)
             //})
@@ -37,7 +35,7 @@ const ItemListContainer = ({ greeting }) => {
             //.finally(() => {
             //    setLoading(false)
             //})
-    //}, [categoryID])
+    //}, [categoryId])
 
     if(loading) {
         return <h1>Cargando...</h1>

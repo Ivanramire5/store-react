@@ -19,21 +19,21 @@ const App = () => {
   return (
     <div className="App">
       <NotificationProvider>
+      <CartProvider>
         <BrowserRouter>
           <AuthProvider>
-            <CartProvider>
               <NavBar />
               <Routes>
                 <Route path='/' element={<ItemListContainer props= {props} />} />
-                <Route path='/category/:categoryID' element={<ItemListContainer props={props} />} />
-                <Route path='/item/:itemID' element={<ItemDetailContainer />} />
+                <Route path='/category/:categoryId' element={<ItemListContainer props={props} />} />
+                <Route path='/item/:itemId' element={<ItemDetailContainer />} />
                 <Route path='/login' element={<Login />} />
                 <Route path='/cart' element={<Cart />} />
                 <Route path='/checkout' element={<Checkout />} />
               </Routes>
-            </CartProvider>
-          </AuthProvider>
-        </BrowserRouter>
+            </AuthProvider>
+          </BrowserRouter>
+        </CartProvider>
       </NotificationProvider>
     </div>
   );

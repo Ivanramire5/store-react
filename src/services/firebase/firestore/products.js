@@ -2,9 +2,9 @@ import { getDocs, collection, query, where } from 'firebase/firestore'
 import { db } from '../firebaseConfig'
 import { createAdaptedProductFromFirestore } from '../../../adapters/createAdaptedProductFromFirestore'
 
-export const getProducts = (categoryID) => {
-    const productsRef = categoryID
-    ? query(collection(db, 'products'), where('category', '==', categoryID))
+export const getProducts = (categoryId) => {
+    const productsRef = categoryId
+    ? query(collection(db, 'products'), where('category', '==', categoryId))
     : collection(db, 'products')
 
     return getDocs(productsRef)
@@ -19,6 +19,6 @@ export const getProducts = (categoryID) => {
         })
     }
 
-export const getProductsByID = () => {
+export const getProductsById = () => {
     
 }
