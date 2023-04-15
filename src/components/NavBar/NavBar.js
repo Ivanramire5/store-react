@@ -27,7 +27,7 @@ const NavBar = () => {
     return (
         <nav className="NavBar">
             <NavLink to='/'><h1 className="h1Primario">RetroStore</h1></NavLink>
-            <div className='d-grid gap-2 d-md-block'>
+            <div className='BotonesNavbar'>
                 {
                     categories.map(cat => {
                         return (

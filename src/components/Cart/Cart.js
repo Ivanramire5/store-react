@@ -12,6 +12,7 @@ const Cart = () => {
     const [direccion, setDireccion] = useState('');
     const [ciudad, setCiudad] = useState('');
     const [provincia, setProvincia] = useState('');
+    const [mail, setMail] = useState('')
 
     const handleSubmit = (event) => {
         event.preventDefault();
@@ -22,6 +23,7 @@ const Cart = () => {
         setDireccion('');
         setCiudad('');
         setProvincia('');
+        setMail('');
     }
 
     return (
@@ -37,36 +39,43 @@ const Cart = () => {
                         )
                     })
                 }
-                <form onSubmit={handleSubmit}>
-                    <label>
-                        Nombre:
-                        <input type="text" value={nombre} onChange={(e) => setNombre(e.target.value)} />
-                    </label>
-                    <label>
-                        Apellido:
-                        <input type="text" value={apellido} onChange={(e) => setApellido(e.target.value)} />
-                    </label>
-                    <label>
-                        Teléfono:
-                        <input type="text" value={telefono} onChange={(e) => setTelefono(e.target.value)} />
-                    </label>
-                    <label>
-                        Código Postal:
-                        <input type="text" value={codigoPostal} onChange={(e) => setCodigoPostal(e.target.value)} />
-                    </label>
-                    <label>
-                        Dirección:
-                        <input type="text" value={direccion} onChange={(e) => setDireccion(e.target.value)} />
-                    </label>
-                    <label>
-                        Ciudad:
-                        <input type="text" value={ciudad} onChange={(e) => setCiudad(e.target.value)} />
-                    </label>
-                    <label>
-                        Provincia:
-                        <input type="text" value={provincia} onChange={(e) => setProvincia(e.target.value)} />
-                    </label>
-                </form>
+                <div>
+                    <form className="EstilosFormulario" onSubmit={handleSubmit}>
+                        <label className="LabelFormulario">
+                            Nombre:
+                            <input type="text" value={nombre} onChange={(e) => setNombre(e.target.value)} />
+                        </label>
+                        <label className="LabelFormulario">
+                            Apellido:
+                            <input type="text" value={apellido} onChange={(e) => setApellido(e.target.value)} />
+                        </label>
+                        <label className="LabelFormulario">
+                            Teléfono:
+                            <input type="text" value={telefono} onChange={(e) => setTelefono(e.target.value)} />
+                        </label>
+                        <label className="LabelFormulario">
+                            Mail:
+                            <input type="text" value={mail} onChange={(e) => setMail(e.target.value)} />
+                        </label>
+                        <label className="LabelFormulario">
+                            Código Postal:
+                            <input type="text" value={codigoPostal} onChange={(e) => setCodigoPostal(e.target.value)} />
+                        </label>
+                        <label className="LabelFormulario">
+                            Dirección:
+                            <input type="text" value={direccion} onChange={(e) => setDireccion(e.target.value)} />
+                        </label>
+                        <label className="LabelFormulario">
+                            Ciudad:
+                            <input type="text" value={ciudad} onChange={(e) => setCiudad(e.target.value)} />
+                        </label>
+                        <label className="LabelFormulario">
+                            Provincia:
+                            <input type="text" value={provincia} onChange={(e) => setProvincia(e.target.value)} />
+                        </label>
+                    </form>
+                </div>
+                
             </div>
             <Link className="botonCompra" to='/checkout'>Finalizar compra</Link>
         </div>

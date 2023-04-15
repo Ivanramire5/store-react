@@ -9,7 +9,7 @@ const CartWidget = () => {
 
     return (
         <div className='CartWidget' onClick={() => navigate('/cart')}>
-            <h2> 🛒 </h2>
+            <h2 className='CarritoEstilo'> Tus compras 🛒 </h2>
             {cantidadTotal} total ${total}
         </div>
     );

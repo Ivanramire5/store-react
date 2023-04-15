@@ -4,14 +4,14 @@
     justify-content: space-around;
     background-color: #114f6cfa;
     padding: 16px;
+    border-color: #1f63ab;
+    border-style: solid;
+    border-top-color: #114f6c00;
+    border-left-color: #114f6c00;
+    border-right-color: #114f6c00;  
+    border-bottom-width: 10px;  
 }
-.d-grid{
-    display: flex;
-    justify-content: space-around;
-    align-items: center;
-    background-color: #19a7ce60;
-    border-radius: 10%;
-}
+
 .Link{
     margin-right: 10px;
     color: #E5E5E5;
@@ -64,6 +64,12 @@
     color:  #EEEEEE;
     border-color: #23374D;
     border-style: solid;
+    width: 800px;
+    margin-left: 260px;
+    text-align: center;
+    display: grid;
+    place-items: center;
+
 }
 .CardItem img{
     height: 300px;
@@ -115,9 +121,6 @@
 }
 .Button{
     margin: 10px
-}
-.CartWidget{
-    color: #19A7CE;
 }
 .Numero{
     color: #23374D;
@@ -194,4 +197,47 @@
     padding: 10px;
     color:#E5E5E5;
     background-color:#23374D
+}
+.FormularioReact{
+    display: grid;
+    padding: 20px;
+    margin: auto;
+    justify-content: center;
+    text-align: center;
+}
+.EstilosFormulario{
+    padding: 20px;
+    background-color:#23374D;
+    border-radius: 5%;
+    color:#E5E5E5;
+}
+.LabelFormulario input{
+    margin-left: 20px;
+    margin-top: 20px;
+    border-radius: 5%;
+    border-color: #338ff1;
+    border-style: solid;
+}
+.CarritoEstilo{
+    font-size: 1.6rem;
+    margin-top: 5px;
+
+}
+.CartWidget{
+    color:#E5E5E5;
+    background-color: #19a7ce4b;
+    border-radius: 10%;
+    height: 70px;
+    width: 200px;
+    margin-left: 10px;
+}
+.BotonesNavbar{
+    padding-left: 10px;
+    border-color: #19A7CE;
+    border-style: solid;
+    border-top-color: #114f6c00;
+    border-left-color: #114f6c00;
+    border-right-color: #114f6c00;
+    border-radius: 2px;
+    padding-top: 1px;
 }

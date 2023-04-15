@@ -29,7 +29,7 @@ const Counter = (props) => {
     }
 
     return (
-        <div>
+        <div className="ContadorDiv">
             <h2>{count}</h2>
             <h4>Cantidad Disponible: {props.stock}</h4>
             <Button label="-" handleClick={decrement}/>
