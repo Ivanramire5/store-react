@@ -64,12 +64,6 @@
     color:  #EEEEEE;
     border-color: #23374D;
     border-style: solid;
-    width: 800px;
-    margin-left: 260px;
-    text-align: center;
-    display: grid;
-    place-items: center;
-
 }
 .CardItem img{
     height: 300px;
