@@ -31,6 +31,7 @@
 ### El proyecto estaria dentro de tu consola como localhost:3000
 ### ----------------------------------------------
 #VARIABLES DE ENTORNO
+### ----------------------------------------------
 #####REACT_APP_apiKey=AIzaSyCOFOyhyYsT4thz2X7aMskdrcBO9p5dUhY
 #####REACT_APP_authDomain=retro-store-83151.firebaseapp.com
 #####REACT_APP_projectId=retro-store-83151

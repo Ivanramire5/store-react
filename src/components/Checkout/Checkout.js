@@ -19,9 +19,9 @@ const handleConfirm = async (userData) => {
         setLoading(true)
         const objOrder = {
             buyer: {
-                name: 'Ivan',
-                phone: '183943236',
-                address: 'Calle falsa 123'
+                name: '',
+                phone: '',
+                address: ''
             },
         items: cart,
         total: total
