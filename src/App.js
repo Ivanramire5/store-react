@@ -24,8 +24,8 @@ const App = () => {
           <AuthProvider>
               <NavBar />
               <Routes>
-                <Route path='/' element={<ItemListContainer props= {props} />} />
-                <Route path='/category/:categoryId' element={<ItemListContainer props={props} />} />
+                <Route path='/' element={<ItemListContainer greeting={'Todos nuestros productos'} />} />
+                <Route path='/category/:categoryId' element={<ItemListContainer greeting={'Nuestras categorias'} />} />
                 <Route path='/item/:itemId' element={<ItemDetailContainer />} />
                 <Route path='/login' element={<Login />} />
                 <Route path='/cart' element={<Cart />} />
