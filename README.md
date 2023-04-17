@@ -29,3 +29,12 @@
 ### En Login la logica para poner un username y una password
 ### ----------------------------------------------
 ### El proyecto estaria dentro de tu consola como localhost:3000
+### ----------------------------------------------
+#VARIABLES DE ENTORNO
+#####REACT_APP_apiKey=AIzaSyCOFOyhyYsT4thz2X7aMskdrcBO9p5dUhY
+#####REACT_APP_authDomain=retro-store-83151.firebaseapp.com
+#####REACT_APP_projectId=retro-store-83151
+#####REACT_APP_storageBucket=retro-store-83151.appspot.com
+#####REACT_APP_messagingSenderId=1052314104667
+#####REACT_APP_appId=1:1052314104667:web:93ecc173a748a4d86b607e
+#####REACT_APP_measurementId=G-MNB3ZFXPDQ
