@@ -39,7 +39,7 @@ const Cart = () => {
                         )
                     })
                 }
-                <div>
+                <div className="FormularioReact">
                     <form className="EstilosFormulario" onSubmit={handleSubmit}>
                         <label className="LabelFormulario">
                             Nombre:
