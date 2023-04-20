@@ -1,20 +1,22 @@
-import { db } from '../firebaseConfig'
-import { collection } from "firebase/firestore"
+import { db } from "../firebaseConfig"
+import { collection, getDocs, where, query } from "firebase/firestore"
 
-export const getCategories = () => {
-    const [ categories, setCategories ] = useState([])
+export const getCategories = (categoriesId) => {
 
-    useEffect(() => {
-        const categoriesRef = query(collection(db, 'categories'), orderBy('order'))
-        getDocs(categoriesRef)
+    const categoriesRef = categoriesId 
+    ? query(collection(db, 'categories'), where('categories', '==', categoriesId))
+    : collection(db, 'categories')
+
+    return getDocs(categoriesRef)
         .then(snapshot => {
-            const categoriesAdapted = snapshot.docs.map(doc => {
-                const data = doc.data()
-                return { id: doc.id, ...data }
-            })
-            setCategories(categoriesAdapted)
-        }).catch(error => {
-            console.log(error)
-        }) 
-    }, [])
+        const categoriesAdapted = snapshot.docs.map(doc => {
+            const data = doc.data()
+            return { id: doc.id, ...data }
+        })
+
+        return categoriesAdapted
+
+    }).catch(error => {
+            return error
+    })
 }

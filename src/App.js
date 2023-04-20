@@ -14,7 +14,7 @@ import Checkout from './components/Checkout/Checkout';
 
 const App = () => {
 
-  const props = {titulo: "Bienvenidos a RetroStore", subtitulo: "La mejor tienda de productos retro del pais"}
+  const props = {titulo: "Bienvenidos todos a RetroStore", subtitulo: "La mejor tienda de productos retro del pais"}
 
   return (
     <div className="App">
