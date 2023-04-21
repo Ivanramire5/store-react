@@ -1,85 +1,84 @@
-import { useContext, useState } from 'react'
-import { CartContext } from '../../context/CartContext'
-// import { db } from '../../service/firebase/firebaseConfig'
-// import { documentId, getDocs, query, collection, where, writeBatch, addDoc } from 'firebase/firestore'
-import { useNotification } from '../../notification/NotificationService'
-import { NavLink, useNavigate, useParams } from 'react-router-dom'
-import { addOrder } from "../../services/firebase/firestore/orders"
-import { useAsync } from '../../hooks/useAsync'
+import React, { useContext } from 'react';
+import { useNavigate } from 'react-router-dom';
+import { createOrdenCompra,getOrdenCompra } from '../../services/firebase/firestore/orders';
+import { getProducts, getProductsById } from "../../services/firebase/firestore/products";
+import { CartContext } from '../../context/CartContext';
+import Swal from "sweetalert"
 
+const Checkout = () => {
+    const {getTotal, cart, clearCart} = useContext(CartContext)
+    const datosFormulario = React.useRef()
+    let navigate = useNavigate()
 
-    function Form () {
-    const { cart, total, clearCart } = useContext(CartContext)
-    const { setNotification } = useNotification()
-    const [ user, setUser] = useState ({})
+    const consultarFormulario = (e) => {
+        e.preventDefault()
+        const datForm = new FormData(datosFormulario.current)
+        const cliente = Object.fromEntries(datForm)
 
+        const aux = [...cart]
 
-    const {newOrder} = useParams ()
-
-    const getOrdersWithId = () => addOrder (newOrder)
-
-    const { data: orders, error, loading } = useAsync (getOrdersWithId, [newOrder])
-
-
-    const handleConfirm = async (userData) => {
-        try{ 
-            const objOrder = {
-                buyer: {
-                    name: '',
-                    phone: '',
-                    address: ''
-                },
-                items: cart,
-                total: total
-            }
-        } catch (error) {
-                setNotification('error', 'Hubo un error generando la orden')
-                } finally {
-                    
+        aux.forEach(prodCarrito => {
+            getProducts(prodCarrito.id).then(prod => {
+                if(prod.stock >= prodCarrito.quantity) {
+                    prod.stock -= prodCarrito.quantity
+                    getProductsById(prodCarrito.id, prod)
+                } else {
                 }
-        }
-    
+            })
+        })
 
-        const CampoDeFormulario = ({ label, name }) => {
-                return (
-                <div>
-                    <label htmlFor={name}>{label}</label>
-                    <input type="text" id={name} name={name} value={user[name]} onChange={handleConfirm}/>
-                </div>
-                );
-            };
-
+        createOrdenCompra(cliente, getTotal , new Date().toISOString()).then(ordenCompra => {
+            getOrdenCompra(ordenCompra.id)
+            .then(item => {
+                Swal.fire(
+                    'Compra finalizada',
+                    `¡Muchas gracias por su compra, su orden es ${item.id}!`,
+                    'success'
+                )
+                clearCart()
+                e.target.reset()
+            }).catch(error => {
+                Swal.fire(
+                    'Error',
+                    `Hubo un error con su orden. Vuelva a intentarlo`,
+                    'error'
+                )
+            })
+            
+        })
         return (
             <div className='FormularioReact'>
                 <h1 className='h1Formulario'>Complete sus datos para terminar la compra</h1>
-                    <form>
-                            <CampoDeFormulario label="Nombre:" name="nombre" />
-                            <CampoDeFormulario label="Apellido:" name="apellido" />
-                            <CampoDeFormulario label="Código Postal:" name="codigoPostal" />
-                            <CampoDeFormulario label="Teléfono:" name="telefono" />
-                            <CampoDeFormulario label="Correo Electrónico:" name="correoElectronico" />
-                            <CampoDeFormulario label="Dirección:" name="direccion" />
-                        
-                        <button className='botonFormulario'> Terminar compra </button>
-                    </form>
-                    {
-                        orders?.map (order =>{
-                            return (
-                                <NavLink key={order.id} onChange={handleConfirm} />
-                            )
-                        })
-                    }
-                    {/* <div className='datos del formulario'>
-                    <h1>{ greeting }</h1>
-                    {
-                    orders.map (order => {
-                        return (
-                            <input key={order.id}>{orderId.label}</input>
-                        )
-                        })
-                    }
-                </div> */}
+                <form onSubmit={consultarFormulario} ref={datosFormulario}>
+                <div>
+                    <label htmlFor="nombre" className="form-label">Nombre y Apellido</label>
+                    <input type="text" className="form-control" name="nombre" />
+                </div>
+                <div>
+                    <label htmlFor="email" className="form-label">Email</label>
+                    <input type="email" className="form-control" name="email" />
+                </div>
+                <div>
+                    <label htmlFor="email2" className="form-label">Repetir Email</label>
+                    <input type="email" className="form-control" name="email2" />
+                </div>
+                <div>
+                    <label htmlFor="dni" className="form-label">DNI</label>
+                    <input type="number" className="form-control" name="dni" />
+                </div>
+                <div>
+                    <label htmlFor="celular" className="form-label">Numero telefonico</label>
+                    <input type="number" className="form-control" name="celular" />
+                </div>
+                <div>
+                    <label htmlFor="direccion" className="form-label">Dirección</label>
+                    <input type="text" className="form-control" name="direccion" />
+                </div>
+                <button type="submit" className="botonFormulario">Finalizar Compra</button>
+            </form>
             </div>
-        )    
+        )
+    }
 }
-export default Form;
+
+export default Checkout
