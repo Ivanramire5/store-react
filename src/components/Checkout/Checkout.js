@@ -3,7 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import { createOrdenCompra,getOrdenCompra } from '../../services/firebase/firestore/orders';
 import { getProducts, getProductsById } from "../../services/firebase/firestore/products";
 import { CartContext } from '../../context/CartContext';
-import Swal from "sweetalert"
+import Swal from "sweetalert2"
 
 const Checkout = () => {
     const {getTotal, cart, clearCart} = useContext(CartContext)
@@ -46,6 +46,8 @@ const Checkout = () => {
             })
             
         })
+    }
+        
         return (
             <div className='FormularioReact'>
                 <h1 className='h1Formulario'>Complete sus datos para terminar la compra</h1>
@@ -78,7 +80,6 @@ const Checkout = () => {
             </form>
             </div>
         )
-    }
 }
 
 export default Checkout
